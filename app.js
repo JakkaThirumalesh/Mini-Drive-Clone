@@ -7,6 +7,13 @@ connectToDB();
 const cookieParser = require("cookie-parser");
 const app = express();
 const indexRoute = require("./routes/index.routes");
+const createSupabaseClient = require("./config/supabase");
+
+async function startApp() {
+  const supabase = await createSupabaseClient();
+  console.log("Supabase initialized:", supabase);
+}
+startApp();
 
 app.set("view engine", "ejs");
 app.use(cookieParser());

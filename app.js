@@ -15,6 +15,10 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use("/", indexRoute);
 app.use("/user", userRoute);
+process.on("uncaughtException", (err) => {
+  console.log("Uncaught Exception");
+  console.log(err);
+});
 
 app.listen(3000, () => {
   console.log("server is running on port 3000");
